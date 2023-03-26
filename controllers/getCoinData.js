@@ -18,7 +18,6 @@ async function btcData() {
       },
     );
     let bitcoin = res.data.data[`${getCoinID[i]}`];
-    // console.log(bitcoin);
     dataIndexing(bitcoin);
   }
 }
@@ -28,13 +27,11 @@ btcData();
 const dataIndexing = async (bitcoin) => {
   try {
     let coinSymbol = bitcoin.symbol;
-    // let coinPrice = Math.floor(bitcoin.quote.USD.price);
     let coinId = bitcoin.id;
     let coinName = bitcoin.name;
     let coinMax_supply = bitcoin.max_supply;
     let coinCirculating_supply = bitcoin.circulating_supply;
 
-    
     const client = await mongoClient.connect();
     const collection = client.db('crypto').collection('Data');
     // await collection.deleteMany({});
