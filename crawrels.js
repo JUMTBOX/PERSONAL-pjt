@@ -12,9 +12,13 @@ const getHtml = async () => {
  async function getTableData () {
     const res = await getHtml();
     const dataBundle = cheerio.load(res.data);
-    const tableBody = dataBundle(
-      '#root > div > div.sc-hOzowv.kzVwjj > div > main > div.sc-JHWBx.hLhVwb > div.sc-gUJyNl.lnzAez > table > tbody',
-    );
+    const tableBodySelector =
+      '#root > div > div.sc-hOzowv.kzVwjj > div > main > div.sc-JHWBx.hLhVwb > div.sc-gUJyNl.lnzAez > table > tbody';
+   dataBundle(tableBodySelector).each((i, el) => {
+      const tableRowDatas = dataBundle(el);
+    console.log();
+    })
+    console.log(dataBundle(tableBodySelector).children());
  }
 
  getTableData();
