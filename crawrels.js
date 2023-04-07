@@ -24,5 +24,3 @@ const getHtml = async () => {
  getTableData();
 
    
-
-

@@ -1,5 +1,8 @@
 const express = require('express');
+const {datarefreshing} = require('../controllers/mainController')
 
 const router = express.Router();
 
-// router.get('/',);
+router.get('/data', datarefreshing);
+
+module.exports = router;

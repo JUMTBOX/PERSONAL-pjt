@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 
-require('dotenv').config();
+dotenv.config();
 
 const app = express();
 const { PORT } = process.env; 
@@ -16,6 +17,10 @@ app.use(
         saveUninitialized: true,
     })
 );
+
+const dataRouter = require('./routes/mainRouter');
+
+app.use('/data', dataRouter);
 
 app.use('/', (req, res) => {
     res.send('Hello from express');

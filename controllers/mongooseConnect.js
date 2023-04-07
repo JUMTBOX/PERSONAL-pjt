@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 // const { MONGO_DB_URI } = process.env;
-const MONGO_DB_URI = 'mongodb+srv://yjey12:didghdus220@cluster0.fwyixrv.mongodb.net/?retryWrites=true&w=majority'
+const MONGO_DB_URI = 'mongodb+srv://yjey12:didghdus220@cluster0.fwyixrv.mongodb.net/?retryWrites=true&w=majority';
 
 const connect = async () => {
     try {
         await mongoose.connect(MONGO_DB_URI, {
-            dbName:'crypto',
+            dbName:'population',
             useNewUrlParser: true,
         });
         console.log('몽고 디비 접속 성공');
