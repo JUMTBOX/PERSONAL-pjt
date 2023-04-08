@@ -1,9 +1,11 @@
 const { parseString } = require('xml2js');
 
 const { DATA_API_KEY } = process.env;
-const AREA_END_POINT = `http://openapi.seoul.go.kr:8088/${DATA_API_KEY}/xml/citydata/1/5/신촌·이대역`;
+// const AREA_END_POINT = `http://openapi.seoul.go.kr:8088/${DATA_API_KEY}/xml/citydata/1/5/신촌·이대역`;
 
-async function fetchWeatherData() {
+async function fetchWeatherData(END_POINT) {
+  const AREA_END_POINT = `http://openapi.seoul.go.kr:8088/${DATA_API_KEY}/xml/citydata/1/5/${END_POINT}`;
+
   let weatherModel = {
     temperature: '',
     sen_temperature: '',
@@ -35,21 +37,19 @@ async function fetchWeatherData() {
       let timeWeather =
         result['SeoulRtd.citydata']['CITYDATA'][0].WEATHER_STTS[0]
           .WEATHER_STTS[0].FCST24HOURS[0];
-      
-        weatherModel = {
-          temperature: dayWeather.TEMP[0],
-          sen_temperature: dayWeather.SENSIBLE_TEMP[0],
-          min_temperature: dayWeather.MIN_TEMP[0],
-          max_temperature: dayWeather.MAX_TEMP[0],
-          pcp_msg: dayWeather.PCP_MSG[0],
-          air_idx: dayWeather.AIR_IDX[0],
-          fcst_24hours: timeWeather,
-        };
+
+      weatherModel = {
+        temperature: dayWeather.TEMP[0],
+        sen_temperature: dayWeather.SENSIBLE_TEMP[0],
+        min_temperature: dayWeather.MIN_TEMP[0],
+        max_temperature: dayWeather.MAX_TEMP[0],
+        pcp_msg: dayWeather.PCP_MSG[0],
+        air_idx: dayWeather.AIR_IDX[0],
+        fcst_24hours: timeWeather,
+      };
     }
   });
   return weatherModel;
 }
-
-fetchWeatherData();
 
 module.exports = fetchWeatherData;
