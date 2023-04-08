@@ -26,6 +26,8 @@ const datarefreshing = async () => {
 
 const sendData = async (req, res) => {
   try {
+    datarefreshing();
+    
     const data = await PopulationData.find({});
     const weather = await WeatherData.find({});
     console.log(weather)

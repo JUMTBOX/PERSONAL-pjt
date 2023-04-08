@@ -34,7 +34,7 @@ async function fetchWeatherData() {
       //당일 시간별 날씨
       let timeWeather =
         result['SeoulRtd.citydata']['CITYDATA'][0].WEATHER_STTS[0]
-          .WEATHER_STTS[0].FCST24HOURS[0].FCST24HOURS[0];
+          .WEATHER_STTS[0].FCST24HOURS[0];
       
         weatherModel = {
           temperature: dayWeather.TEMP[0],
