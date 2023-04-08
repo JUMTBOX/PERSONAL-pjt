@@ -9,6 +9,15 @@ async function fetchData() {
     live_data: {},
   };
 
+  let weatherModel = {
+    temperature: '',
+    sen_temperature: '',
+    min_temperature: '',
+    max_temperature: '',
+    pcp_msg: '',
+    air_idx: '',
+  };
+
   const resolve = await fetch(AREA_END_POINT, {
     method: 'GET',
     headers: {
@@ -28,22 +37,16 @@ async function fetchData() {
           .LIVE_PPLTN_STTS[0];
       //지역 이름
       let areaName = result['SeoulRtd.citydata']['CITYDATA'][0].AREA_NM;
-      //당일 전체적인 날씨
-      let dayWeather =
-        result['SeoulRtd.citydata']['CITYDATA'][0].WEATHER_STTS[0]
-          .WEATHER_STTS[0];
-      //당일 시간별 날씨
-      let timeWeather =
-        result['SeoulRtd.citydata']['CITYDATA'][0].WEATHER_STTS[0]
-          .WEATHER_STTS[0].FCST24HOURS[0].FCST24HOURS;
-
+    
       model = {
         area_name: areaName[0],
         live_data: liveData,
       };
     }
   });
-  return model;
+  return (model);
 }
+
+// fetchData();
 
 module.exports = fetchData;
