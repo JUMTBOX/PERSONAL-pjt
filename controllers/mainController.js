@@ -6,6 +6,8 @@ const mongooseConnect = require('./mongooseConnect');
 
 mongooseConnect();
 
+
+//필요없는 로직이었음...
 const datarefreshing = async (END_POINT) => {
   try {
     const data = await fetchData(END_POINT);
