@@ -13,7 +13,7 @@ const getHtml = async () => {
     const res = await getHtml();
     const dataBundle = cheerio.load(res.data);
     const tableBodySelector =
-      '#root > div > div.sc-hOzowv.kzVwjj > div > main > div.sc-JHWBx.hLhVwb > div.sc-gUJyNl.lnzAez > table > tbody';
+      'div.sc-gUJyNl.lnzAez > table > tbody';
    dataBundle(tableBodySelector).each((i, el) => {
       const tableRowDatas = dataBundle(el);
     console.log();
