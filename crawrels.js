@@ -16,7 +16,7 @@ const getHtml = async () => {
       'div.sc-gUJyNl.lnzAez > table > tbody';
    dataBundle(tableBodySelector).each((i, el) => {
       const tableRowDatas = dataBundle(el);
-    console.log();
+    console.log(tableRowDatas);
     })
     console.log(dataBundle(tableBodySelector).children());
  }
